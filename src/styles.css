@@ -1,1 +1,63 @@
+
 /* You can add global styles to this file, and also import other style files */
+
+*
+{
+     margin: 0;
+     padding: 0;
+     box-sizing: border-box;
+}
+
+body
+{
+     background-color: #fff;
+     line-height: 1.6rem;
+
+}
+
+
+
+
+:root{
+    /* -- isliye so that we come to know that it is our declared variable and not a class */
+
+   --primary-color:#6958ca;
+
+
+
+}
+
+
+
+
+
+.btn-primary
+{
+            background-color: #47a9aa !important;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            
+
+            position: relative;
+        }
+
+        .btn-primary:hover{
+            background-color: #47a8aa71;
+            color: #fff;
+        }
+
+
+        .btn-primary:active{
+          transition: all 0.5s ;
+          top: 4px;
+          left: 4px;
+
+
+      }
+
+        
+       

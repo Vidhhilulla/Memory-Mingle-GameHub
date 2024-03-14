@@ -9,6 +9,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeModule } from './home/home.module';
 import { CardGameModule } from './card-game/card-game.module';
 import { SharedModule } from './shared/shared.module';
+import { RouterModule } from '@angular/router';
+
 
 
 
@@ -25,7 +27,9 @@ import { SharedModule } from './shared/shared.module';
     HttpClientModule,
     HomeModule,
     CardGameModule,
-    SharedModule
+    SharedModule,
+    RouterModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -44,7 +44,7 @@
         </div>
       </div>
     </div>
-    <div class=" ">
+    <div class="" *ngFor="let game of gameData">
       <div class="container mt-5">
         <div class="game-container row">
           <div class="game-image col-6">
@@ -53,59 +53,14 @@
               alt="Game Image" />
           </div>
           <div class="game-content col-6">
-            <h2 class="mb-4 game-title">Game Title</h2>
+            <h2 class="mb-4 game-title">{{game.game_name}}</h2>
             <p>
-              <span class="badges">Badges:</span>
-              <i class="fa-solid fa-2x fa-star"></i>
-              <i class="fa-solid fa-2x fa-star"></i>
-              <i class="fa-solid fa-2x fa-star"></i>
+              <span class="Points fw-bold">Points:</span>
+                3
             </p>
 
-            <button class="btn btn-primary mt-3 start-game-btn    ">
-              Start Game
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="container mt-5">
-        <div class="game-container row">
-          <div class="game-image col-6">
-            <img
-              src="https://images.unsplash.com/photo-1500995617113-cf789362a3e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdhbWVzfGVufDB8fDB8fHww"
-              alt="Game Image" />
-          </div>
-          <div class="game-content col-6">
-            <h2 class="mb-4 game-title">Game Title</h2>
-            <p>
-              <span class="badges">Badges:</span>
-              <i class="fa-solid fa-2x fa-star"></i>
-              <i class="fa-solid fa-2x fa-star"></i>
-              <i class="fa-solid fa-2x fa-star"></i>
-            </p>
+            <button class="btn btn-primary mt-3 start-game-btn " [routerLink]="['/instructions',game.slug]"  (click)="setGameId(game.game_id)">
 
-            <button class="btn btn-primary mt-3 start-game-btn    ">
-              Start Game
-            </button>
-          </div>
-        </div>
-      </div>
-      <div class="container mt-5">
-        <div class="game-container row">
-          <div class="game-image col-6">
-            <img
-              src="https://images.unsplash.com/photo-1500995617113-cf789362a3e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdhbWVzfGVufDB8fDB8fHww"
-              alt="Game Image" />
-          </div>
-          <div class="game-content col-6">
-            <h2 class="mb-4 game-title">Game Title</h2>
-            <p>
-              <span class="badges">Badges:</span>
-              <i class="fa-solid fa-2x fa-star"></i>
-              <i class="fa-solid fa-2x fa-star"></i>
-              <i class="fa-solid fa-2x fa-star"></i>
-            </p>
-
-            <button class="btn btn-primary mt-3 start-game-btn    ">
               Start Game
             </button>
           </div>

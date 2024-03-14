@@ -1,0 +1,34 @@
+.Heading h1 {
+  font-size: 2rem;
+  font-weight: 500;
+  color: var(--primary-color);
+
+  letter-spacing: 1rem;
+  font-weight: bolder;
+}
+
+.Heading span {
+  font-size: 1.3rem;
+  text-transform: uppercase;
+  color: var(--primary-color);
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  font-weight: bold;
+
+}
+
+.content
+{
+  color: #6f2dbd;
+}
+.game-instructions
+{
+  padding: 1rem;
+  background-color: #baebff;
+  border-radius: 2.6rem;
+}
+
+.content
+{
+  font-size: 1.4rem;
+}

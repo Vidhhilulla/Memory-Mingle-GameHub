@@ -1,3 +1,5 @@
+
+
 #navbar {
   display: flex;
   justify-content: space-between;
@@ -213,7 +215,7 @@
   color: #6958ca;
 }
 
-.badges {
+.Points {
   font-size: 1.4rem;
   color: #6958ca;
 }
