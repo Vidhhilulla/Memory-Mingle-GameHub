@@ -3,12 +3,14 @@ import { CommonModule } from '@angular/common';
 import { GameComponent } from './game/game.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
+import { TryingImageComponent } from './trying-image/trying-image.component';
 
 
 
 @NgModule({
   declarations: [
-    GameComponent
+    GameComponent,
+    TryingImageComponent
   ],
   imports: [
     CommonModule,
@@ -17,7 +19,8 @@ import { NgbToastModule } from '@ng-bootstrap/ng-bootstrap';
   ],
   exports:
   [
-    GameComponent
+    GameComponent,
+    TryingImageComponent
 
 
   ]

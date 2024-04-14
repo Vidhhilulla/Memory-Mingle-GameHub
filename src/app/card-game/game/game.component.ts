@@ -1,198 +1,269 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 import { CardGameService } from '../card-game.service';
 import { cardGameConstarint } from 'src/app/shared/interfaces/cardGameConstraint';
+import { cardGameImage } from 'src/app/shared/interfaces/cardgameImage';
+import { APP_CONSTANTS } from 'src/app/shared/constants/app.constants';
+import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { QuitModalComponent } from 'src/app/shared/components/quit-modal/quit-modal.component';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-game',
   templateUrl: './game.component.html',
   styleUrls: ['./game.component.css'],
 })
-export class GameComponent {
+export class GameComponent implements OnInit 
+{
   slug!: string;
+  colors: any;
+  selectedColor!: any[] ;
+  myMap = new Map<string, number>();
+  selectedObjects3: any[] = [];
+  isDisable = false;
+  show = true;
+  points = 0;
+  pointScored = 0;
+  count = 0;
+  cardsArr: any[] = [];
+  selectedCard: number | null = null;
+  notEqual = 0;
+  totalClicks = 0;
+  constrainsts!: cardGameConstarint;
+  noOfCards = 0;
+  movesForlevel = 0;
+  pairLeft = 0;
+  repeatedColor!:any;
+  imageUrlIdData: any;
+
 
   constructor(
     private router: Router,
     private cookieservice: CookieService,
     private route: ActivatedRoute,
-    private cardgameservice: CardGameService
+    private cardgameservice: CardGameService,
+    private modalService: NgbModal,
+    private http: HttpClient
   ) {
+
+    
     this.route.params.subscribe((value) => {
+      this.selectedColor = []
       this.slug = value['slug'];
-      console.log(this.slug);
-
-      // console.log(this.gameId);
+      console.log(value)
+      this.cardgameservice.getLevelData().subscribe((val) => {
+        this.constrainsts = val;
+        console.log(val)
+        this.noOfCards = this.constrainsts.no_of_cards;
+        console.log(this.noOfCards)
+        this.movesForlevel = this.constrainsts.moves;
+        this.pairLeft = this.noOfCards / 2;
+        this.fetchImagesId()
+        
+      });
     });
+
   }
-  colors!: string[];
-  selectedColor: string[] = [];
-  myMap = new Map();
-  selectedObjects3: any[] = [];
-  isDisable: boolean = false;
 
-  // for toast
-  show: boolean = true;
 
-  points: number = 0;
-  pointScored: number = 0;
-  count: number = 0;
-  cardsArr: any[] = [];
-  selectedCard: number | null = null;
-  notEqual: number = 0;
-  totalClicks: number = 0;
-
-  // Getting the constraints from the backend
-  constrainsts!: cardGameConstarint;
-  noOfCards!: number;
-  movesForlevel!: number;
-  pairLeft!: number;
 
   ngOnInit(): void 
   {
-    this.cardgameservice.getLevelData().subscribe((val) => {
-      this.constrainsts = val;
-      console.log(val);
-      console.log(this.constrainsts);
-
-      this.noOfCards = this.constrainsts.no_of_cards;
-      console.log(this.noOfCards);
-      this.movesForlevel = this.constrainsts.moves;
-      console.log(this.movesForlevel);
-
-      this.pairLeft = this.noOfCards / 2;
-      console.log(this.pairLeft);
-      this.generateColor(this.noOfCards / 2);
-
-    });
+    // this.fetchImages();
+   
 
   }
 
-  generateColor(reqColors: number): void {
-    this.colors = [
-      '#ffcc00',
-      '#ff0000',
-      '#00ff00',
-      '#0000ff',
-      '#ff6600',
-      '#9900cc',
-      '#cc00cc',
-      '#0099cc',
-      '#009900',
-      '#ff0099',
-    ];
+  fetchImagesId(): void {
+    this.cardgameservice.fetchImagesId().subscribe((data) => {
+      // console.log(data,"from service")
+      this.imageUrlIdData = data;
+      this.colors = data
+      console.log("after service",this.colors)
+      console.log("imagedata",this.imageUrlIdData)
+      for (let i = 0; i < this.imageUrlIdData.length; i++) {
+        console.log(this.imageUrlIdData[i].id);
+      }
+      this.generateImageUrl(this.noOfCards / 2);
+    });
+    // console.log("image",this.imageUrlIdData)
+  }
+
+
+
+  generateImageUrl(reqColors: number): void 
+  {
+    // for (let img of this.imageUrlData) {
+    //   const imageUrl = APP_CONSTANTS.path_of_images+img;
+    //   console.log(imageUrl);
+    //   // add it in this.colors
+    //   this.colors.push(imageUrl);
+    // }
+    // this.colors = this.imageUrlIdData;
+    console.log(this.colors,"colors")
+    console.log(this.colors.length)
+
+
     const numbersUsed: Set<number> = new Set();
-    for (let i = 0; i < reqColors; i++) {
+    let len = 0, i =0;
+   while(len != 8){
       let index = Math.floor(Math.random() * this.colors.length);
+      console.log(index,"index")
       if (!numbersUsed.has(index)) {
         numbersUsed.add(index);
-        this.selectedColor[i] = this.colors[index];
+        // this.selectedColor[i] = this.colors[index];
+        this.selectedColor.splice(i,0,this.colors[index])
+        i++;
+        len++;
       }
     }
+    let k =Math.floor(Math.random()*100)
+    k=k%reqColors
+    this.repeatedColor = [];
     for (let i = 0; i < reqColors; i++) {
-      this.myMap.set(this.selectedColor[i], 0);
+      this.repeatedColor[(i+k)%(reqColors)]=this.selectedColor[i];
     }
-    console.log(this.selectedColor);
-    console.log(this.myMap);
-    this.selectedObjects3 = this.generateObject(this.selectedColor);
-    console.log(this.selectedObjects3);
+    this.selectedObjects3 = this.generateObject(this.selectedColor,this.repeatedColor);
+    console.log(this.selectedObjects3,"selected")
   }
 
-  generateObject(selectedColor: string[]): any[] {
+  generateObject(selectedColor: number[],repeatedColor:number[]): any[] {
     const formedObject: any[] = [];
     let n = this.noOfCards;
-    console.log("Printing n"+n)
+    let leng = this.selectedColor.length
     let i = 0;
-    while (i < n) {
-      let index = Math.floor((Math.random() * n) / 2);
-      let key = selectedColor[index];
-      if (this.myMap.has(key) == true && this.myMap.get(key) < 2) {
+    let j = 0;
+    while (i < leng && j < leng) {
+      let index = Math.floor((Math.random() * 2));
+      if(index===0){
         formedObject.push({
           number: i,
-          color: selectedColor[index],
+          color: selectedColor[i],
           isSelected: false,
         });
-        this.myMap.set(key, this.myMap.get(key) + 1);
+        i++;
+      }
+      else{
+        formedObject.push({
+          number: j,
+          color: repeatedColor[j],
+          isSelected: false,
+        });
+        j++;
+      }
+    }
+    if(i===leng){
+      while(j<leng){
+        formedObject.push({
+          number: j,
+          color: repeatedColor[j],
+          isSelected: false,
+        });
+        j++
+      }
+    }
+    if(j===leng){
+      while(i<leng){
+        formedObject.push({
+          number: i,
+          color: selectedColor[i],
+          isSelected: false,
+        });
         i++;
       }
     }
+    console.log(selectedColor)
+    console.log(repeatedColor)
+    console.log(formedObject)
     return formedObject;
-  }
+}
 
-  onCardClick(card: any): void 
-  {
-    this.movesForlevel-=1;
-    if(this.movesForlevel==0)
-    {
-      // To send the progress to the backend
-      this.sendProgressOfTimeOut()
+  onCardClick(card: any): void {
+    this.movesForlevel -= 1;
+    if (this.movesForlevel === 0) {
+      // this.sendProgressOfFailure();
     }
-    this.count = this.count + 1;
+    this.count++;
     this.cardsArr.push(card);
-    console.log(`Clicked on card ${card.number} and  ${card.color}`);
     this.selectedCard = card.number;
-    card.isSelected = true; // Toggle the isSelected property
+    card.isSelected = true;
 
-    if (this.count % 2 == 0) {
+    if (this.count % 2 === 0) {
       setTimeout(() => {
         this.check(0, 1);
       }, 500);
     }
   }
-  check(i: number, j: number): void 
-  {
-    this.totalClicks += 1;
-    if (this.cardsArr[0].color != this.cardsArr[1].color) {
-      console.log('Not equal');
-      this.notEqual += 1;
 
+  check(i: number, j: number): void {
+    this.totalClicks++;
+    if (this.cardsArr[0].number !== this.cardsArr[1].number) {
+      this.notEqual++;
       this.cardsArr[i].isSelected = false;
       this.cardsArr[j].isSelected = false;
     } else {
-      console.log('Equals');
-      this.points += 1;
-      this.pairLeft -= 1;
+      this.points++;
+      this.pairLeft--;
 
-      if (this.points == this.noOfCards / 2) {
+      if (this.points === this.noOfCards / 2) {
         this.totalScore();
       }
     }
-    console.log('Printing score card');
-    console.log(this.pairLeft);
-    console.log(this.points);
-    console.log(this.totalClicks);
-    console.log(this.movesForlevel)
 
     this.cardsArr = [];
   }
-  totalScore(): void 
-  {
+
+  totalScore(): void {
     this.pointScored = Math.ceil((this.noOfCards / this.count) * 10);
-    this.sendProgressOfSuccess();
-    console.log(`Thus Your total Score is ` + this.pointScored);
-    console.log(`Thus notEqual is ` + this.notEqual);
-    console.log(`Thus totalClicks is ` + this.totalClicks);
-    console.log(`Thus Moves left are is ` + this.movesForlevel);
-
+    // this.sendProgressOfSuccess();
   }
 
-  onQuitClick(): void 
-  {
-    this.router.navigate(['/quit']);
-
-  }
-  // we'll send 0 to indicate that he has lost the game
-  sendProgressOfTimeOut():void
-  {
-
-  }
-
-
-  // we'll send 1 to indicate that he has won the game
-  sendProgressOfSuccess():void
-  {
-
+  onQuitClick(): void {
+    // this.sendProgressOfFailure();
+    // this.router.navigate(['/quit']);
+	  this.modalService.open(QuitModalComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+		(result) => {
+		  // this.closeResult = `Closed with: ${result}`;
+		},
+		(reason) => {
+		  // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+		},
+	  );
   }
 
+  sendProgressOfFailure(): void {
+    this.cardgameservice.insertProgressOfuser(0, 0).subscribe((data) => {
+      // console.log(data);
+    });
+  }
 
+  sendProgressOfSuccess(): void {
+    this.cardgameservice.insertProgressOfuser(this.pointScored, 1).subscribe((data) => {
+      // console.log(data);
+    });
+  }
+
+
+
+  // ye fetch images ko kahi se call karna padeega
+  // calling it on init ka first line
+  
+  fetchImages(): void {
+    this.cardgameservice.fetchImages().subscribe((data) => {
+      this.imageUrlIdData = data;
+    });
+  }
+
+  getImage(id: number): any {
+    return this.http.post(`${APP_CONSTANTS.BACKEND_URL}fetchImageUrlById`,{id});
+  }
+
+
+  getUrl(id:number){
+   return "http://localhost:8082/api/fetchImageUrlById/"+(id+1);
+  }
+
+  
 }

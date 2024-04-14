@@ -14,13 +14,13 @@
     align-items: center; /* Center items vertically */
 }
 
-/* .quitModal{
+.congratulationsModal{
 
     height: 35rem;
     width: 35rem;
     margin: auto;
     margin-top: 30px;
-} */
+}
 
 /* Style for modal title */
 .modal-title {

@@ -5,31 +5,73 @@ import { APP_CONSTANTS } from '../shared/constants/app.constants';
 import { CookieService } from 'ngx-cookie-service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class CardGameService {
-
-  constructor(private http:HttpClient,    private cookieService: CookieService
-    ) 
-  {
-
-  }
-
+  constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   getLevelData(): Observable<any> {
-    const gameId = this.cookieService.get('gameId');
-    const levelNo = this.cookieService.get('levelNo');
-    
-    const body = 
-    {
+    let gameId = this.cookieService.get('gameId');
+    let levelNo = this.cookieService.get('levelNo');
+
+    let body = {
       game_id: gameId,
-      level_no: levelNo
+      level_no: levelNo,
     };
 
-    console.log("printing url "+`${APP_CONSTANTS.BACKEND_URL}getDataOflevel`)
-    
+    // console.log('printing url ' + `${APP_CONSTANTS.BACKEND_URL}getDataOflevel`);
+
     return this.http.post(`${APP_CONSTANTS.BACKEND_URL}getDataOflevel`, body);
   }
 
+  insertProgressOfuser(score: number, game_won: number): Observable<any> {
+    let gameId = this.cookieService.get('gameId');
+    let levelNo = this.cookieService.get('levelNo');
+    let user_id: number = 1;
 
+    let body = {
+      user_id: this.cookieService.get('user_id'),
+      points: score,
+      game_id: gameId,
+      level_no: levelNo,
+      game_won: game_won,
+    };
+
+    return this.http.post(`${APP_CONSTANTS.BACKEND_URL}insertProgress`, body);
+  }
+
+
+  fetchImages():Observable<any>
+  {
+    let gameId = this.cookieService.get('gameId');
+    let levelNo = this.cookieService.get('levelNo');
+    let body = {
+      game_id: gameId,
+      level_no: levelNo,
+    };
+
+    return this.http.post(`${APP_CONSTANTS.BACKEND_URL}getImages`,body);
+  }
+
+
+  fetchImagesId():Observable<any>
+  {
+    // let gameId = this.cookieService.get('gameId');
+    // let levelNo = this.cookieService.get('levelNo');
+
+    let gameId = 1;
+    let levelNo = 1;
+    let body = {
+      game_id: gameId,
+      level_no: levelNo,
+    };
+
+    return this.http.post(`${APP_CONSTANTS.BACKEND_URL}getImagesId`,body);
+  }
+
+
+  fetchImageUrlById(id:number):Observable<any>
+  {
+    return this.http.post(`${APP_CONSTANTS.BACKEND_URL}fetchImageUrlById`,id);
+  }
 }

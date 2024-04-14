@@ -8,22 +8,22 @@
 
                 <h1 class="title pt-3" >Card Matching</h1>
                 <div class="centre-box">
-                    <button class="tile" *ngFor="let card of selectedObjects3" (click)="onCardClick(card)" [disabled]="card.isSelected" [ngClass]="{'selected': card.number === selectedCard}" >
-                        Card 
-                        <button *ngIf="card.isSelected" class="color-display" [disabled]="card.isSelected"  [style.background-color]="card.color"></button>
-                    </button>
-
+                    <div class="tile" *ngFor="let card of selectedObjects3" (click)="onCardClick(card)" [ngClass]="{'selected': card.number === selectedCard}" >
+                        <img *ngIf="!card.isSelected" class="card-image" [src]=getUrl(card.number) alt="Card Image" style="width: 100%;" />
+                        <div *ngIf="card.isSelected" class="color-display" [style.background-color]="card.color"></div>
+                    </div>
                 </div>
+                
 
                 <div class="scorecard d-flex d-col" >
-
+<!-- 
                     <div class="row">
                         <h1>Scorecard</h1>
                         <h3>Your Score: {{points}}</h3>
                         <h3>Moves: {{totalClicks}}</h3>
                         <h3> Pairs left: {{pairLeft}}</h3>
 
-                    </div>
+                    </div> -->
       
 
                 </div>
@@ -34,7 +34,7 @@
         </div>
 
 
-        <div class="quit">
+        <!-- <div class="quit">
             <ngb-toast *ngIf="show" [autohide]="false" (hidden)="show = false">
                 <ng-template ngbToastHeader>
                     <div class="me-auto">
@@ -48,6 +48,6 @@
                 </ng-template>
                 Hello, I am toast. Have you noticed my header has been generated from a Template?
             </ngb-toast>
-        </div>
+        </div> -->
     </section>
 </body>

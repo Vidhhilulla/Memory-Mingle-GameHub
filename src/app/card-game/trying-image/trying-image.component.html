@@ -1,0 +1,19 @@
+<p>trying-image works!</p>
+
+
+<div *ngFor="let item of imageUrlIdData">
+    {{ item.id }}
+
+    <!-- <img [src]="'this.http.post(`${APP_CONSTANTS.BACKEND_URL}fetchImageUrlById)' + item.id" alt=""> -->
+      <!-- <img [src]="this.http.post(`${APP_CONSTANTS.BACKEND_URL}fetchImageUrlById`,{id})" alt=""> -->
+
+
+      <img [src]="getImage(item.id)" alt="">
+
+<img [src]="getUrl(item.id)" alt="">
+
+  </div>
+  
+
+
+  

@@ -21,7 +21,10 @@ export class GameService {
 
   getInstructions(slug:string):Observable<any>
   {
-    return this.http.get(`${APP_CONSTANTS.BACKEND_URL}getInstruction/${slug}`);
+    return this.http.get(`${APP_CONSTANTS.BACKEND_URL}getInstructions/${slug}`);
 
   }
+
+
+
 }

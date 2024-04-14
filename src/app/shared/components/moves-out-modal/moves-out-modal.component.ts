@@ -1,15 +1,14 @@
-import { Component, TemplateRef } from '@angular/core';
+import { Component } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
 @Component({
-  selector: 'app-quit-modal',
-  templateUrl: './quit-modal.component.html',
-  styleUrls: ['./quit-modal.component.css']
+  selector: 'app-moves-out-modal',
+  templateUrl: './moves-out-modal.component.html',
+  styleUrls: ['./moves-out-modal.component.css']
 })
-export class QuitModalComponent
-{
-  
+export class MovesOutModalComponent {
+
 	closeResult = '';
 
 	constructor(private modalService: NgbModal) { }

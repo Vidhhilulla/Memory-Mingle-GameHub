@@ -61,8 +61,11 @@ submit():void
 
   this.cookieservice.set("token",value.token)
   this.cookieservice.set("username",value.g_name)
-  this.cookieservice.set("userid",value.g_id)
+  this.cookieservice.set("g_id",value.g_id)
   this.cookieservice.set("isLoggedIn","1")
+  this.cookieservice.set("user_id",value.user_id)
+  
+
 
     }
     else
