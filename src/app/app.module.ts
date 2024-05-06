@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { CardGameModule } from './card-game/card-game.module';
 import { SharedModule } from './shared/shared.module';
 import { RouterModule } from '@angular/router';
+import { GuardianPortalModule } from './guardian-portal/guardian-portal.module';
 
 
 
@@ -29,9 +30,11 @@ import { RouterModule } from '@angular/router';
     CardGameModule,
     SharedModule,
     RouterModule,
-
+    GuardianPortalModule
   ],
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  
+ }

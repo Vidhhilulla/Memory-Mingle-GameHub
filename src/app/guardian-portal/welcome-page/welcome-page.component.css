@@ -1,0 +1,97 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #f8f9fa;
+    height: 100vh;
+}
+
+nav {
+    background-color: #168aad;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+
+.profile-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #168aad;
+    margin-bottom: 3rem;
+    letter-spacing:0.7rem;
+
+
+}
+
+.profile-details {
+    font-size: 2.2rem;
+    color: #168aad;
+    letter-spacing: 1rem;
+    text-decoration: underline;
+    text-transform: capitalize;
+
+
+}
+
+.profile-details span {
+    font-weight: bold;
+    color: #168aad;
+}
+
+.action-buttons {
+    margin-top: 30px;
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #168aad;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0.5rem;
+}
+
+.action-buttons button:hover {
+    background-color: #168aad;
+}
+.logo {
+display: flex;
+margin-right: 10px;
+margin-top: 12px;
+}
+.logo i,
+.logo span {
+color: #e3f2fd;
+
+}
+
+.logo p {
+text-align: center;
+color:#90caf9;
+font-size: 2.5rem;
+}
+
+/* .logo{
+background-color:linear-gradient(#e3f2fd, #90caf9) !important;
+
+} */
+
+a {
+    text-decoration: none;
+}

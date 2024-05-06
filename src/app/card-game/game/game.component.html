@@ -1,53 +1,30 @@
-
 <body>
-    <section class="flex-container">
-        <div class="game">
-            <div class="container-fluid">
+    <section class="flex-container " >
+        <div class="game" >
+            <div class="container-fluid" style="width: 100%;">
                 <button type="button" class="quit-btn" (click)="onQuitClick()">QUIT</button>
-                                <!-- <button type="button" class="quit-btn" >QUIT</button> -->
-
-                <h1 class="title pt-3" >Card Matching</h1>
-                <div class="centre-box">
-                    <div class="tile" *ngFor="let card of selectedObjects3" (click)="onCardClick(card)" [ngClass]="{'selected': card.number === selectedCard}" >
-                        <img *ngIf="!card.isSelected" class="card-image" [src]=getUrl(card.number) alt="Card Image" style="width: 100%;" />
-                        <div *ngIf="card.isSelected" class="color-display" [style.background-color]="card.color"></div>
+                <div class="scorecard d-flex" >
+                    <div class="col ">
+                        <h1>Scorecard</h1>
+                        <h3>Moves: {{movesForlevel}}</h3>
+                        <h3> Pairs left: {{pairLeft}}</h3>
+                    </div>
+                </div>
+                <h1 class="title pt-3 mb-5 fw-bold" >Card Matching Game</h1>
+                <div class="centre-box" style="width: 100%;">
+                    <div class="tile" *ngFor="let card of selectedObjects3" (click)="onCardClick(card)" [ngClass]="{'selected': card.number === selectedCard}"  style="width: 100%;">
+                        <button [disabled]="card.isSelected" style="margin: -0.2rem;">
+                            <img *ngIf="card.isSelected"  class="card-image" [src]=getUrl(card.number) alt="Card Image" >
+                        </button>
+                        <div *ngIf="!card.isSelected" class="color-display" style="width: 100%;">
+                            <img src="../../../assets/question.jpg" alt="" style="width: 100%;" >
+                        </div>
                     </div>
                 </div>
                 
 
-                <div class="scorecard d-flex d-col" >
-<!-- 
-                    <div class="row">
-                        <h1>Scorecard</h1>
-                        <h3>Your Score: {{points}}</h3>
-                        <h3>Moves: {{totalClicks}}</h3>
-                        <h3> Pairs left: {{pairLeft}}</h3>
-
-                    </div> -->
-      
-
-                </div>
-
-     
-                <!-- <img class="imgg" src="https://tse2.mm.bing.net/th?id=OIP.1xocAnWoa8IrXHU4UpYYRAHaHa&pid=Api&P=0&h=180" alt=""> -->
             </div>
+      
         </div>
-
-
-        <!-- <div class="quit">
-            <ngb-toast *ngIf="show" [autohide]="false" (hidden)="show = false">
-                <ng-template ngbToastHeader>
-                    <div class="me-auto">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24">
-                            <path
-                                d="M16.896 10l-4.896-8-4.896 8-7.104-4 3 11v5h18v-5l3-11-7.104 4zm-11.896 10v-2h14v2h-14zm14.2-4h-14.4l-1.612-5.909 4.615 2.598 4.197-6.857 4.197 6.857 4.615-2.598-1.612 5.909z"
-                            />
-                        </svg>
-                        <strong class="mx-1">Fancy</strong> header here
-                    </div>
-                </ng-template>
-                Hello, I am toast. Have you noticed my header has been generated from a Template?
-            </ngb-toast>
-        </div> -->
     </section>
 </body>

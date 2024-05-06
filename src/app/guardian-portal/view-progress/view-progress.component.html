@@ -1,0 +1,80 @@
+
+
+<body>
+    <!-- Top navbar -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles fa-3x"></i>
+                <a href="#">
+                    <p><span>Memory</span>Mingle</p>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Profile section -->
+    <div class="container profile-section">
+        <div class="profile-name">Child's progress</div>
+        <div class="profile-details">
+            <p>Progress Table:</p>
+        </div>
+        <table>
+            <tr>
+                <th>Game</th>
+                <th>Level</th>
+                <th >Won/Lost</th>
+                <th>Points</th>
+                <th>Date Played</th>
+            </tr>
+<!-- 
+            <div *ngIf="progressData">
+                <tr >
+                    <td>{{progressData.game_played_name}}</td>
+                    <td>{{progressData.level_id}}</td>
+                    <td >{{progressData.won_yn}}</td>
+                    <td>{{progressData.points}}</td>
+                    <td>{{progressData.game_played_date}}</td>
+                </tr>
+            </div> -->
+
+            
+                <tr >
+                    <td>{{progressData.game_played_name}}</td>
+                    <td>{{progressData.level_id}}</td>
+                    <td >{{progressData.won_yn}}</td>
+                    <td>{{progressData.points}}</td>
+                    <td>{{progressData.game_played_date}}</td>
+                </tr>
+ 
+            <tr>
+
+        </table>
+    </div>
+    <script>
+        document.write('<base href="' + document.location + '" />');
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/core-js-bundle@3.6.5/minified.js"></script>
+      <script src="https://cdn.jsdelivr.net/npm/zone.js@0.11.2/dist/zone.min.js"></script>
+      <script>
+        var appLocation = "/angular/bar-series/examples/stacked-bars";
+        var boilerplatePath = "/example-runner/charts-angular-boilerplate";
+        var systemJsMap = {
+          "ag-charts-angular":
+            "https://cdn.jsdelivr.net/npm/ag-charts-angular@9.3.1/",
+          "ag-charts-community":
+            "https://cdn.jsdelivr.net/npm/ag-charts-community@9.3.1/dist/package/main.cjs.js",
+          "ag-charts-enterprise":
+            "https://cdn.jsdelivr.net/npm/ag-charts-enterprise@9.3.1/dist/package/main.cjs.js",
+        };
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/systemjs@0.21.6/dist/system.js"></script>
+      <script src="/example-runner/charts-angular-boilerplate/systemjs.config.js"></script>
+      <script>
+        System.import("/angular/bar-series/examples/stacked-bars/main.ts").catch(
+          function (err) {
+            console.error(err);
+          },
+        );
+      </script>
+</body>

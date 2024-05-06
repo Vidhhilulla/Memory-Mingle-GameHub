@@ -27,4 +27,13 @@ export class GameService {
 
 
 
+  guardianPortalLogin(body:any):Observable<any>
+  {
+    return this.http.post(APP_CONSTANTS.BACKEND_URL +'guardianPortalLogin',body);
+  }
+
+
+
+
+
 }

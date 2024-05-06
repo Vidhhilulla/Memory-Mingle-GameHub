@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { ActivatedRoute, Router } from '@angular/router';
+
 
 
 @Component({
@@ -12,7 +14,7 @@ export class CongratulationsModalComponent
     
 	closeResult = '';
 
-	constructor(private modalService: NgbModal) { }
+	constructor(private modalService: NgbModal,private route : ActivatedRoute,private router : Router) {}
   
 	ngOnInit(): void {
 	  
@@ -32,6 +34,13 @@ export class CongratulationsModalComponent
 	  } else {
 		return `with: ${reason}`;
 	  }
+	}
+
+
+	onQuit():void
+	{
+		this.modalService.dismissAll()	
+		this.router.navigate(["/home"])
 	}
 
 

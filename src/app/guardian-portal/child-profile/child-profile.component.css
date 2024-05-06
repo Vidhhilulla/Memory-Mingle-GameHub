@@ -1,0 +1,103 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #f8f9fa;
+}
+
+nav {
+    background-color: #168aad;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #168aad;
+    margin-bottom: 10px ;
+    letter-spacing:0.7rem;
+
+}
+
+.profile-details {
+    font-size: 2.2rem;
+    color: #168aad;
+    letter-spacing: 1rem;
+
+}
+
+.profile-details span {
+    font-weight: bold;
+    color: #168aad;
+}
+
+
+.profile-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.profile-section * {
+    margin-bottom: 3.4rem;
+}
+
+
+
+table {
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    border-collapse: collapse;
+    font-size: 1.2rem;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+.logo {
+display: flex;
+margin-right: 10px;
+margin-top: 12px;
+}
+.logo i,
+.logo span {
+color: #e3f2fd;
+
+}
+
+.logo p {
+text-align: center;
+color:#90caf9;
+font-size: 2.5rem;
+}
+
+/* .logo{
+background-color:linear-gradient(#e3f2fd, #90caf9) !important;
+
+} */
+
+a {
+    text-decoration: none;
+}

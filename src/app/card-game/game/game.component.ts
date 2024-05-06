@@ -8,6 +8,9 @@ import { APP_CONSTANTS } from 'src/app/shared/constants/app.constants';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { QuitModalComponent } from 'src/app/shared/components/quit-modal/quit-modal.component';
 import { HttpClient } from '@angular/common/http';
+import { MovesOutModalComponent } from 'src/app/shared/components/moves-out-modal/moves-out-modal.component';
+import { CongratulationsModalComponent } from 'src/app/shared/components/congratulations-modal/congratulations-modal.component';
+
 
 
 @Component({
@@ -59,6 +62,7 @@ export class GameComponent implements OnInit
         this.noOfCards = this.constrainsts.no_of_cards;
         console.log(this.noOfCards)
         this.movesForlevel = this.constrainsts.moves;
+        console.log("Printing the moves:"+this.movesForlevel)
         this.pairLeft = this.noOfCards / 2;
         this.fetchImagesId()
         
@@ -80,10 +84,14 @@ export class GameComponent implements OnInit
     this.cardgameservice.fetchImagesId().subscribe((data) => {
       // console.log(data,"from service")
       this.imageUrlIdData = data;
+      console.log("Printing the imageUrlIdData"+this.imageUrlIdData)
       this.colors = data
+      console.log("Printing the colors"+this.colors )
+
       console.log("after service",this.colors)
       console.log("imagedata",this.imageUrlIdData)
-      for (let i = 0; i < this.imageUrlIdData.length; i++) {
+      for (let i = 0; i < this.imageUrlIdData.length; i++)
+        {
         console.log(this.imageUrlIdData[i].id);
       }
       this.generateImageUrl(this.noOfCards / 2);
@@ -95,22 +103,14 @@ export class GameComponent implements OnInit
 
   generateImageUrl(reqColors: number): void 
   {
-    // for (let img of this.imageUrlData) {
-    //   const imageUrl = APP_CONSTANTS.path_of_images+img;
-    //   console.log(imageUrl);
-    //   // add it in this.colors
-    //   this.colors.push(imageUrl);
-    // }
-    // this.colors = this.imageUrlIdData;
     console.log(this.colors,"colors")
-    console.log(this.colors.length)
-
+    console.log("Printing length of colors:"+this.colors.length)
+    let colors_length=this.colors[length-1]-this.colors[0]
 
     const numbersUsed: Set<number> = new Set();
     let len = 0, i =0;
-   while(len != 8){
+    while(len != (this.noOfCards/2)){
       let index = Math.floor(Math.random() * this.colors.length);
-      console.log(index,"index")
       if (!numbersUsed.has(index)) {
         numbersUsed.add(index);
         // this.selectedColor[i] = this.colors[index];
@@ -139,7 +139,7 @@ export class GameComponent implements OnInit
       let index = Math.floor((Math.random() * 2));
       if(index===0){
         formedObject.push({
-          number: i,
+          number: this.imageUrlIdData[i].id,
           color: selectedColor[i],
           isSelected: false,
         });
@@ -147,7 +147,7 @@ export class GameComponent implements OnInit
       }
       else{
         formedObject.push({
-          number: j,
+          number:  this.imageUrlIdData[j].id,
           color: repeatedColor[j],
           isSelected: false,
         });
@@ -157,7 +157,7 @@ export class GameComponent implements OnInit
     if(i===leng){
       while(j<leng){
         formedObject.push({
-          number: j,
+          number: this.imageUrlIdData[j].id,
           color: repeatedColor[j],
           isSelected: false,
         });
@@ -167,23 +167,20 @@ export class GameComponent implements OnInit
     if(j===leng){
       while(i<leng){
         formedObject.push({
-          number: i,
+          number:  this.imageUrlIdData[i].id,
           color: selectedColor[i],
           isSelected: false,
         });
         i++;
       }
     }
-    console.log(selectedColor)
-    console.log(repeatedColor)
-    console.log(formedObject)
     return formedObject;
 }
 
   onCardClick(card: any): void {
     this.movesForlevel -= 1;
     if (this.movesForlevel === 0) {
-      // this.sendProgressOfFailure();
+      this.sendProgressOfFailure();
     }
     this.count++;
     this.cardsArr.push(card);
@@ -206,6 +203,8 @@ export class GameComponent implements OnInit
     } else {
       this.points++;
       this.pairLeft--;
+      this.movesForlevel += 2;
+
 
       if (this.points === this.noOfCards / 2) {
         this.totalScore();
@@ -216,13 +215,14 @@ export class GameComponent implements OnInit
   }
 
   totalScore(): void {
-    this.pointScored = Math.ceil((this.noOfCards / this.count) * 10);
-    // this.sendProgressOfSuccess();
+    // this.pointScored = Math.ceil((this.noOfCards / this.count) * 10);
+
+    
+    this.sendProgressOfSuccess();
   }
 
   onQuitClick(): void {
-    // this.sendProgressOfFailure();
-    // this.router.navigate(['/quit']);
+    this.sendProgressOfFailure();
 	  this.modalService.open(QuitModalComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then(
 		(result) => {
 		  // this.closeResult = `Closed with: ${result}`;
@@ -234,14 +234,33 @@ export class GameComponent implements OnInit
   }
 
   sendProgressOfFailure(): void {
+    this.modalService.open(MovesOutModalComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        // this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    )
     this.cardgameservice.insertProgressOfuser(0, 0).subscribe((data) => {
-      // console.log(data);
+      console.log("Inserted the failure data")
+
+      console.log(data);
     });
   }
 
   sendProgressOfSuccess(): void {
-    this.cardgameservice.insertProgressOfuser(this.pointScored, 1).subscribe((data) => {
-      // console.log(data);
+    this.modalService.open(CongratulationsModalComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+      (result) => {
+        // this.closeResult = `Closed with: ${result}`;
+      },
+      (reason) => {
+        // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
+      }
+    )
+    this.cardgameservice.insertProgressOfuser(5,1).subscribe((data) => {
+      console.log("Inserted the success data")
+      console.log(data);
     });
   }
 
@@ -250,11 +269,11 @@ export class GameComponent implements OnInit
   // ye fetch images ko kahi se call karna padeega
   // calling it on init ka first line
   
-  fetchImages(): void {
-    this.cardgameservice.fetchImages().subscribe((data) => {
-      this.imageUrlIdData = data;
-    });
-  }
+  // fetchImages(): void {
+  //   this.cardgameservice.fetchImages().subscribe((data) => {
+  //     this.imageUrlIdData = data;
+  //   });
+  // }
 
   getImage(id: number): any {
     return this.http.post(`${APP_CONSTANTS.BACKEND_URL}fetchImageUrlById`,{id});

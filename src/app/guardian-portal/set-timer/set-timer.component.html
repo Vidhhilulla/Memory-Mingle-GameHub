@@ -1,0 +1,48 @@
+<body>
+    <nav class="navbar">
+        <div class="container">
+            <div class="logo">
+                <i class="fa-solid fa-wand-magic-sparkles fa-3x"></i>
+                <a href="#"><p><span>Memory</span>Mingle</p></a>
+            </div>
+        </div>
+    </nav>
+
+    <div class="container section">
+        <div class="name">Set The Timer</div>
+    </div>
+
+    <div class="instructions col-md-6">
+        <h2>Instructions:</h2>
+        <ul>
+            <li class="fw-bold">The minimum time should be half hour</li>
+            <li>Once the child logs in, the timer will start reducing.</li>
+            <li>You will be updated with the time via email once there is only 1 hour left!</li>
+            <li>You can come and increase the timer here.</li>
+            <li>You can also check the time status here.</li>
+        </ul>
+    </div>
+
+
+    <div class="container">
+        <div class="remaining-time-container">
+            <h5 class="fw-bold">The remaining time for today is:</h5>
+            <p class="fw-bold">{{remaining_time}} minutes</p>
+    
+        </div>
+        <div class="timer-container">
+            <form class="mx-auto form-group" [formGroup]="setTimeForm" >
+                <div class="mb-3">
+                    <label for="time" class="form-label" style="font-size: 1.2rem;">Set the daily timer here!!(in minutes):</label>
+                    <input type="number" id="time" name="time"  class="form-control"  formControlName="setTime">
+                </div>
+                <button type="button" class="btn " (click)="setTime()">Set Timer</button>
+            </form>
+        </div>
+    
+        
+
+    </div>
+
+
+</body>

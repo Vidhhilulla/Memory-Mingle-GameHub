@@ -2,15 +2,21 @@
 
 <body>
   <div id="navbar">
-    <span id="welcome-message">Welcome to MemoryMingle</span>
+    <div class="logo">
+      
+      <i class="fa-solid fa-wand-magic-sparkles fa-3x"></i>
+      <a href="#"><p><span>Memory</span>Mingle</p></a>
+  </div>
 
     <div id="profile-info">
-      <div id="profile-image">
+      <!-- <div id="profile-image">
         <img  alt="Profile Image" />
-      </div>
+      </div> -->
       <div id="user-info">
-        <span id="username">username</span>
-        <button id="logout-btn">Logout</button>
+        <!-- <span id="username">Guardian username</span> -->
+        <button class="btn btn-primary" (click)="guardianLogin()">Guardian Log In</button>
+        <button class="btn btn-primary m-2" (click)="logOut()">Log Out</button>
+
       </div>
     </div>
   </div>
@@ -44,20 +50,23 @@
         </div>
       </div>
     </div>
+
+    <div class="username">
+      <p>Welcome user {{username}}!!</p>
+    </div>
     <div class="" *ngFor="let game of gameData">
       <div class="container mt-5">
         <div class="game-container row">
           <div class="game-image col-6">
-            <img
-              src="https://images.unsplash.com/photo-1500995617113-cf789362a3e1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGdhbWVzfGVufDB8fDB8fHww"
-              alt="Game Image" />
+            <img [src]="getUrl(game.image_url)" alt="">
+
           </div>
           <div class="game-content col-6">
-            <h2 class="mb-4 game-title">{{game.game_name}}</h2>
-            <p>
+            <h2 class="mb-4 game-title">{{game.game_name}} Game</h2>
+            <!-- <p>
               <span class="Points fw-bold">Points:</span>
                 3
-            </p>
+            </p> -->
 
             <button class="btn btn-primary mt-3 start-game-btn " [routerLink]="['/instructions',game.slug]"  (click)="setGameId(game.game_id)">
 

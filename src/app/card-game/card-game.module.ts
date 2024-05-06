@@ -21,8 +21,6 @@ import { TryingImageComponent } from './trying-image/trying-image.component';
   [
     GameComponent,
     TryingImageComponent
-
-
   ]
 })
 export class CardGameModule { }

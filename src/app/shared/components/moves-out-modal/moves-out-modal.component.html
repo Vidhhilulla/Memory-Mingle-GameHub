@@ -10,8 +10,8 @@
        </p>
 	</div>
 	<div class="modal-footer">
-		<button type="button" class="btn btn-outline-dark ourButton" >Go to home</button>
-        <button type="button" class="btn btn-outline-dark ourButton" >Retry</button>
+		<button type="button" class="btn btn-outline-dark ourButton"  (click)="onQuit()" >Go to home</button>
+        <button type="button" class="btn btn-outline-dark ourButton"  [routerLink]="['/play-game',slug]"   (click)="onRetry()" >Retry</button>
 
 	</div>
 

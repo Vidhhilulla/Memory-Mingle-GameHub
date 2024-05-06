@@ -8,25 +8,29 @@
 body
 {
     font-family: 'ABeeZee', sans-serif;
-     background-color: #fff;
-     line-height: 1.6rem;
+    /* background-color: #baebff; */
+    line-height: 1.6rem;
      overflow-x: hidden;
 
 }
 
 *{
-    background-color: #7FC7D9;
+    background-color: #baebff;
     margin: 0;
     padding: 0;
 }
 
-.flex-container{
+.flex-container {
     display: flex;
     flex-direction: column;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
 }
-
 .title{
     text-align: center;
+    font-style: italic ;
+    color: #0077b6;
+
 }
 
 .centre-box{
@@ -54,16 +58,6 @@ body
     cursor: pointer;
 }
 
-.quit-btn{
-    margin-top: 30px;
-    margin-right: 1450px;
-    padding: 10px;
-    width: 50px;
-    height: 30px;
-    border-radius: 5px;
-    background: #fff;
-}
-
 .imgg{
     width: 120px;
     height: 120px;
@@ -72,9 +66,37 @@ body
     margin-top: 20px; /* Adjust the margin as needed */
 }
 
-
-.color-display {
+img {
     width: 100%;
     height: 100px;
     border: 2px solid #000; /* Black border */
+    border-radius: 8px;
+}
+.quit-btn{
+    margin-top: 10px;
+    margin-right: 1450px;
+    margin-left: 20px;
+    padding : 15px;
+    width: auto;
+    height: 50px;
+    border-radius: 5px;
+    background: #fff;
+}
+.color-display>img{
+    width: 100%;
+    height: 100px;
+    border: 2px solid #000;
+} 
+.card-image:hover{
+    opacity: 0.8;
+}
+
+.scorecard {
+    padding: 1rem;
+    border: 2px solid #0077b6;
+    height: 200px;
+    width: 220px;
+    margin-left: auto; 
+    color: #0077b6;
+
 }

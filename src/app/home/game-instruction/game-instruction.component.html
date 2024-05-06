@@ -1,11 +1,12 @@
-
+<body>
+  
     <div class="container">
       <div
-        class="game-instructions d-flex justify-content-center align-items-center flex-column p-2 m-5"
+        class="game-instructions d-flex justify-content-center align-items-center flex-column p-2"
       >
         <div class="Heading">
           <h1>THE GAME INSTRUCTIONS ARE!!</h1>
-          <span class="align-items-center d-flex justify-content-center">Lorem ipsum dolor sit.</span>
+          <span class="align-items-center d-flex justify-content-center">Read Nicely!!</span>
         </div>
 
 
@@ -60,18 +61,18 @@
 
 
         <div class="d-flex ">
-            <div class="p-2"><button class="btn btn-primary">EASY</button></div>
-            <div class="p-2"><button class="btn btn-primary"   (click)="sendLevel('EASY')" [routerLink]="['/play-game',slug]" >PLAY</button></div>
+            <div class="p-2"><button class="lvls btn btn-primary"(click)="sendLevel('EASY')" [routerLink]="['/play-game',slug]" >EASY</button></div>
         </div>
 
 
         <div class="d-flex">
-            <div class="p-2"><button class="btn btn-primary">MEDIUM</button></div>
-            <div class="p-2"><button class="btn btn-primary" (click)="sendLevel('MEDIUM')"  [routerLink]="['/play-game',slug]" >PLAY</button></div>
+            <div class="p-2"><button class="lvls btn btn-primary" (click)="sendLevel('MEDIUM')"  [routerLink]="['/play-game',slug]" >MEDIUM</button></div>
         </div>
         <div class="d-flex">
-            <div class="p-2"><button class="btn btn-primary">HARD</button></div>
-            <div class="p-2"><button class="btn btn-primary" (click)="sendLevel('HARD')" [routerLink]="['/play-game',slug]">PLAY</button></div>
+            <div class="p-2"><button class="lvls btn btn-primary" (click)="sendLevel('HARD')" >HARD</button></div>
         </div>
       </div>
     </div>
+
+  </body>
+

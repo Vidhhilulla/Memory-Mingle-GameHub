@@ -8,11 +8,12 @@ import { CookieService } from 'ngx-cookie-service';
   providedIn: 'root',
 })
 export class CardGameService {
+  levelNo!:number;
   constructor(private http: HttpClient, private cookieService: CookieService) {}
 
   getLevelData(): Observable<any> {
     let gameId = this.cookieService.get('gameId');
-    let levelNo = this.cookieService.get('levelNo');
+    let levelNo = this.levelNo;
 
     let body = {
       game_id: gameId,
@@ -25,12 +26,12 @@ export class CardGameService {
   }
 
   insertProgressOfuser(score: number, game_won: number): Observable<any> {
-    let gameId = this.cookieService.get('gameId');
-    let levelNo = this.cookieService.get('levelNo');
+    let gameId = +this.cookieService.get('gameId');
+    let levelNo = this.levelNo;
     let user_id: number = 1;
 
     let body = {
-      user_id: this.cookieService.get('user_id'),
+      user_id: this.cookieService.get("user_id"),
       points: score,
       game_id: gameId,
       level_no: levelNo,
@@ -44,7 +45,7 @@ export class CardGameService {
   fetchImages():Observable<any>
   {
     let gameId = this.cookieService.get('gameId');
-    let levelNo = this.cookieService.get('levelNo');
+    let levelNo = this.levelNo;
     let body = {
       game_id: gameId,
       level_no: levelNo,
@@ -56,11 +57,9 @@ export class CardGameService {
 
   fetchImagesId():Observable<any>
   {
-    // let gameId = this.cookieService.get('gameId');
-    // let levelNo = this.cookieService.get('levelNo');
-
-    let gameId = 1;
-    let levelNo = 1;
+    let gameId = this.cookieService.get('gameId');
+    let levelNo = this.levelNo;
+    console.log("level",levelNo)
     let body = {
       game_id: gameId,
       level_no: levelNo,

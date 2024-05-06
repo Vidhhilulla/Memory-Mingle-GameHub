@@ -1,0 +1,23 @@
+
+<body>
+    <div class="container-fluid">
+        <form class="mx-auto form-group"   [formGroup]="loginForm" >
+            <h4 class="text-center">Login to go to Guardian Portal</h4>
+
+
+            <div class="mb-3 mt-5">
+              <label for="UsernameInput" class="form-label">Enter your name</label>
+              <input type="email" class="form-control" id="username"   formControlName="username" >
+            </div>
+            <div class="mb-3">
+              <label for="exampleInputPassword1" class="form-label ">Password</label>
+              <input type="password" class="form-control" id="password"   formControlName="password">
+              <div id="emailHelp" class="form-text mt-3">Forgot Password?</div>
+  
+            </div>
+            
+            <button  class="btn btn-primary mt-3" (click)="guardianPortalLogin()">Login</button>
+          </form>  
+    </div>
+      
+    </body>

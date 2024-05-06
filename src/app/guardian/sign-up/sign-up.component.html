@@ -4,7 +4,7 @@
       class="mx-auto"
       class="form-group"
       [formGroup]="registerForm"
-      (submit)="submit()"
+      
     >
       <h2 class="text-center">Registration</h2>
       <h4 class="text-center mt-2 mb-1">Details For Guardian</h4>
@@ -56,11 +56,11 @@
         />
       </div>
 
-      <button type="submit" class="col-5 btn btn-primary mt-3">Register</button>
+      <button type="submit" class="col-5 btn btn-primary mt-3"  (click)="register()">Register</button>
 
       <div>
-        <p class="message m-0">Already Registered?</p>
-        <button class="btn btn-login mt-2">Login</button>
+        <p class="message m-3">Already Registered?</p>
+        <button class="btn btn-primary mt-2" (click)="goToLogin()">Login</button>
       </div>
     </form>
   </div>

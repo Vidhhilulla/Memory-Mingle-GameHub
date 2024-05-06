@@ -1,0 +1,282 @@
+body {
+    font-family: 'Ubuntu', sans-serif;
+    background-color: #f8f9fa;
+    height: 100vh;
+}
+
+nav {
+    background-color: #168aad;
+    color: #fff;
+    padding: 10px;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.profile-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+}
+
+.profile-name {
+    font-size: 3rem;
+    font-weight: bold;
+    color: #168aad;
+    margin-bottom: 10px;
+    letter-spacing:0.7rem;
+    margin-bottom: 3rem;
+}
+
+.profile-details {
+    font-size: 2.2rem;
+    color: #168aad;
+    letter-spacing: 1rem;
+    margin-bottom: 1.4rem;
+
+
+}
+
+.profile-details span {
+    font-weight: bold;
+    color: #168aad;
+}
+
+.action-buttons {
+    margin-top: 30px;
+}
+
+.action-buttons button {
+    padding: 10px 20px;
+    font-size: 1.2rem;
+    border: none;
+    border-radius: 5px;
+    background-color: #168aad;
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    margin: 0.5rem;
+}
+
+.action-buttons button:hover {
+    background-color: #168aad;
+}
+
+.logo {
+    display: flex;
+    margin-right: 10px;
+    margin-top: 12px;
+}
+
+.logo i,
+.logo span {
+    color: #e3f2fd;
+}
+
+.logo p {
+    text-align: center;
+    color:#90caf9;
+    font-size: 2.5rem;
+}
+
+a {
+    text-decoration: none;
+}
+
+table {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+
+
+:root {
+  position: absolute;
+  top: 0;
+  left: 0;
+  padding: 0;
+  overflow: hidden;
+  font-family: -apple-system, "system-ui", "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, "Noto Sans", "Liberation Sans", sans-serif,
+    "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol",
+    "Noto Color Emoji";
+}
+
+:root[data-dark-mode="true"] {
+  background: #192232;
+  color: white;
+}
+
+:root,
+body,
+app-view-progress {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+app-view-progress {
+  display: grid;
+  grid-auto-rows: minmax(0, 1fr);
+  grid-auto-columns: minmax(0, 1fr);
+  padding: 1rem;
+}
+
+[data-ag-charts] {
+  overflow: hidden;
+}
+
+/* Center charts with explicit width and heights */
+.ag-chart-wrapper {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+button:not(
+    #myGrid button,
+    #myChart button,
+    button[class*="ag-"],
+    .ag-chart-context-menu button
+  ) {
+  --background-color: transparent;
+  --text-color: #212529;
+  --color-border-primary: #d0d5dd;
+  --hover-background-color: rgba(0, 0, 0, 0.1);
+
+  appearance: none;
+  border: 1px solid var(--color-border-primary);
+  border-radius: 6px;
+  height: 36px;
+  color: var(--text-color);
+  background-color: var(--background-color);
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  padding: 0.375em 1em 0.5em;
+  white-space: nowrap;
+  margin-right: 6px;
+  margin-bottom: 8px;
+  transition: background-color 0.25s ease-in-out;
+}
+
+button:not(
+    #myGrid button,
+    #myChart button,
+    button[class*="ag-"],
+    .ag-chart-context-menu button
+  ):hover {
+  background-color: var(--hover-background-color);
+}
+
+:root[data-dark-mode="true"]
+  button:not(
+    #myGrid button,
+    #myChart button,
+    button[class*="ag-"],
+    .ag-chart-context-menu button
+  ) {
+  --text-color: #f8f9fa;
+  --color-border-primary: rgba(255, 255, 255, 0.2);
+  --hover-background-color: #2a343e;
+}
+
+._icon_1tqo9_1 {
+  fill: var(--color-icon);
+  width: var(--icon-size);
+  height: var(--icon-size);
+}
+._cta_x2rta_1 {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-sm);
+  transition:
+    color 0.25s ease-in-out,
+    background-color 0.25s ease-in-out;
+  cursor: pointer;
+}
+._cta_x2rta_1:hover {
+  background-color: var(--color-util-brand-100);
+}
+._cta_x2rta_1 svg {
+  --icon-size: 1.25em;
+  fill: var(--color-link);
+  transform: translate(1px, 0.75px);
+  transition: fill 0.25s ease-in-out;
+}
+li:first-child ._cta_x2rta_1 svg {
+  --icon-size: 1.35em;
+}
+[data-dark-mode="true"] ._cta_x2rta_1:hover {
+  background-color: var(--color-util-brand-50);
+}
+._tooltip_x2rta_28 {
+  --tooltip-background: var(--color-fg-primary);
+  position: absolute;
+  display: block;
+  color: var(--color-bg-primary);
+  top: -44px;
+  padding: 4px 16px;
+  white-space: nowrap;
+  font-weight: 600;
+  background-color: var(--tooltip-background);
+  border-radius: 6px;
+  transform: translateY(4px);
+  opacity: 0;
+  pointer-events: none;
+  transition-delay: 0;
+  transition:
+    opacity 0.165s ease-in,
+    transform 0.165s ease-in;
+  z-index: 1;
+}
+._tooltip_x2rta_28:before {
+  content: "";
+  position: absolute;
+  background-color: var(--tooltip-background);
+  width: 16px;
+  height: 16px;
+  transform: rotate(45deg);
+  bottom: -7px;
+  left: calc(50% - 8px);
+  border-radius: 3px;
+  z-index: -1;
+}
+._cta_x2rta_1:hover ._tooltip_x2rta_28 {
+  opacity: 1;
+  transform: translateY(0);
+  transition:
+    opacity 0.33s ease-in,
+    transform 0.33s ease-in;
+  transition-delay: 0.165s;
+}
+[data-dark-mode="true"] ._tooltip_x2rta_28 {
+  --tooltip-background: var(--color-bg-secondary);
+  color: var(--color-fg-primary);
+  box-shadow: 0 -4px 16px #0006;
+}

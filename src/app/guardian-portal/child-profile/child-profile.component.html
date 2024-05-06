@@ -1,0 +1,39 @@
+<!-- Top navbar -->
+<nav class="navbar">
+    <div class="container">
+        <div class="logo">
+            <i class="fa-solid fa-wand-magic-sparkles fa-3x"></i>
+            <a href="#"><p><span>Memory</span>Mingle</p></a>
+        </div>
+    </div>
+</nav>
+
+<div class="container profile-section">
+    <div class="profile-name">Child Profile</div>
+    <div class="profile-details">
+        <p>Details of child:</p>
+    </div>
+    <table>
+        <tr>
+            <th></th>
+            <th></th>
+        </tr>
+ 
+        <tr>
+            <td>Date of Birth</td>
+            <td>{{childData.date_of_birth}}</td>
+        </tr>
+        <tr>
+            <td>User Name</td>
+            <td>{{childData.user_name}}</td>
+        </tr>
+        <tr>
+            <td class="fw-bold">Games Played:</td>
+            <td></td>
+        </tr>
+        <tr *ngFor="let data of ChildGameData">
+            <td>{{data.game_name}}</td>
+            <td>{{data.PlayCount}}</td>
+        </tr>
+    </table>
+</div>

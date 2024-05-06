@@ -11,6 +11,33 @@
   z-index: 10001;
 }
 
+
+.logo {
+margin: auto;
+display: flex;
+  }
+  .logo i,
+  .logo span {
+  color: #e3f2fd;
+  
+  }
+  
+  .logo p {
+  text-align: center;
+  color:#90caf9;
+  font-size: 2.5rem;
+  }
+  a {
+    text-decoration: none;
+}
+.username
+{
+  margin-top: 1rem;
+  color: #0077b6;
+  font-size: 2.4rem;
+  font-style: italic;
+}
+
 .game-container {
 
   height: 400px;
@@ -40,6 +67,7 @@
 
 .game-image img {
   max-width: 100%;
+  /* height: 300px; */
   /* Make sure the image doesn't overflow its container */
   border-radius: 10px;
   /* Rounded corners for the image */
@@ -116,9 +144,8 @@
 .hero {
   background-color: #bde0fe;
   /* height: 100vh; */
-  position: relative;
-  /* Set relative positioning on the hero container */
-  z-index: 9999;
+  /* position: relative;
+  z-index: 9999; */
 }
 
 .start-game-btn {
@@ -194,16 +221,30 @@
   /* Set z-index to -1 to place it behind other content */
 }
 
+
 .cloud1 .rec {
   animation: moveCloud 9s linear 0s infinite;
 }
 
 .cloud2 .rec {
   animation: moveCloud 9s linear 3s infinite;
+  
 }
+/* @keyframes moveY {
+  0%{
+    transform: translateY(0px);
+
+  }
+  100%{
+    transform: translateY(20px);
+
+  }
+} */
 
 .cloud3 .rec {
   animation: moveCloud 9s linear 5s infinite;
+  transform: translateY(50px);
+
 }
 .cloud4 .rec {
   animation: moveCloud 9s linear 7s infinite;

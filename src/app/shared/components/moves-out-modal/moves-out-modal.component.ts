@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 
@@ -10,8 +11,18 @@ import { ModalDismissReasons, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 export class MovesOutModalComponent {
 
 	closeResult = '';
+	slug!:string;
 
-	constructor(private modalService: NgbModal) { }
+
+	constructor(private modalService: NgbModal,private route : ActivatedRoute,private router : Router) {
+		this.route.params.subscribe((value) => {
+			this.slug = value['slug'];
+			console.log(this.slug);
+	  
+			// console.log(this.gameId);
+	  
+		  });
+	 }
   
 	ngOnInit(): void {
 	  
@@ -31,6 +42,22 @@ export class MovesOutModalComponent {
 	  } else {
 		return `with: ${reason}`;
 	  }
+	}
+
+
+	
+	onQuit():void
+	{
+		this.modalService.dismissAll()	
+		this.router.navigate(["/home"])
+	}
+
+
+	onRetry():void
+	{
+		this.modalService.dismissAll()	
+		// this.router.navigate(['/play-game',this.slug])
+
 	}
 
 }

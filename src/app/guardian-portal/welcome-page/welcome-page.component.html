@@ -1,0 +1,31 @@
+
+<body>
+    <!-- Top navbar -->
+    <nav class="navbar">
+        <div class="container">
+          <div class="logo">
+            <i class="fa-solid fa-wand-magic-sparkles fa-3x"></i>
+                            <a href="#"
+              ><p><span>Memory</span>Mingle</p></a
+            >
+          </div>
+        </div>
+    </nav>
+
+    <!-- Profile section -->
+    <div class="container profile-section">
+        <img src="https://images.unsplash.com/photo-1599687351724-dfa3c4ff81b1?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fHN0dWRlbnR8ZW58MHx8MHx8fDA%3D" alt="Profile Image" class="profile-image img-thumbnail rounded-circle">
+        <div class="profile-name">Welcome Guardian</div>
+        <div class="profile-details">
+            <p>{{g_name}}</p>
+        </div>
+        <div class="action-buttons">
+            <button (click)="profile()">Profile Of Child</button>
+            <button  (click)="setTimer()">Set Timer</button>
+            <button  (click)="getProgress()">View Progress</button>
+            <button (click)="goToChangePassword()">Change Password</button>
+            <!-- <button>Set Theme</button> -->
+            <button (click)="goToLogOut()">Logout</button>
+        </div>
+    </div>
+</body>
