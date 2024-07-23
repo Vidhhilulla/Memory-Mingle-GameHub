@@ -11,6 +11,7 @@ body
     /* background-color: #baebff; */
     line-height: 1.6rem;
      overflow-x: hidden;
+     
 
 }
 
@@ -29,7 +30,7 @@ body
 .title{
     text-align: center;
     font-style: italic ;
-    color: #0077b6;
+    color: #00527e;
 
 }
 
@@ -94,9 +95,56 @@ img {
 .scorecard {
     padding: 1rem;
     border: 2px solid #0077b6;
-    height: 200px;
+    height: 150px;
     width: 220px;
-    margin-left: auto; 
+    margin: auto;
+    margin-bottom: 20px; 
     color: #0077b6;
 
 }
+
+
+
+#navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background-color: #0077b6;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+    color: #fff;
+    z-index: 10001;
+  }
+  
+  
+  .logo {
+  margin: auto;
+  display: flex;
+    }
+    .logo i,
+    .logo span {
+    color: #e3f2fd;
+    
+    }
+    
+    .logo p {
+    text-align: center;
+    color:#90caf9;
+    font-size: 2.5rem;
+    }
+    a {
+      text-decoration: none;
+  }
+  
+  #profile-info {
+    #user-info {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+    }
+    
+    z-index: 10002;
+    display: flex;
+    align-items: center;
+  }
+  

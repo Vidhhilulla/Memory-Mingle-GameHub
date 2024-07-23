@@ -27,7 +27,6 @@ export class ChangePasswordComponent {
     this.changePasswordForm=new FormGroup
       (
     {
-      currentPin:new FormControl(),
       newPin:new FormControl(),
       confirmNewPin:new FormControl(),
   })  
@@ -36,9 +35,7 @@ export class ChangePasswordComponent {
 
   setPassword():void
   {
-
-    console.log(this.changePasswordForm.value.currentPin)
-    if (this.changePasswordForm.value.currentPin !=this.changePasswordForm.value.confirmNewPin)
+    if (this.changePasswordForm.value.newPin !=this.changePasswordForm.value.confirmNewPin)
       { // Check if form is invalid
       this.modalService.open(InvalidConfirmpwdComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then(
         (result) => {
@@ -46,9 +43,14 @@ export class ChangePasswordComponent {
         },
         (reason) => {
           // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
-        },
-        );
-        return;
+        });
+    }
+    else{
+      this.GuardianPortalservice.changePassword(this.cookieService.get('g_id'),this.changePasswordForm.value.newPin).subscribe((data: any) =>{
+        if(data.valid_yn===1){
+          console.log("password Changed")
+        }
+      });
     }
   }
 }

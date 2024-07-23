@@ -13,6 +13,8 @@ import { InvalidRegistrationComponent } from './components/invalid-registration/
 import { InvalidGuardianComponent } from './components/invalid-guardian/invalid-guardian.component';
 import { ChangePasswordComponent } from '../guardian-portal/change-password/change-password.component';
 import { InvalidConfirmpwdComponent } from './components/invalid-confirmpwd/invalid-confirmpwd.component';
+import { FooterComponent } from './components/footer/footer.component';
+import { TopNavbarComponent } from './top-navbar/top-navbar.component';
 
 
 @NgModule({
@@ -27,7 +29,9 @@ import { InvalidConfirmpwdComponent } from './components/invalid-confirmpwd/inva
     InvalidSetTimeInputComponent,
     InvalidRegistrationComponent,
     InvalidGuardianComponent,
-    InvalidConfirmpwdComponent
+    InvalidConfirmpwdComponent,
+    FooterComponent,
+    TopNavbarComponent
   ],
   imports: [
     CommonModule,
@@ -45,6 +49,7 @@ import { InvalidConfirmpwdComponent } from './components/invalid-confirmpwd/inva
     InvalidSetTimeInputComponent,
     InvalidRegistrationComponent,
     InvalidGuardianComponent,
+    FooterComponent
 
 
 

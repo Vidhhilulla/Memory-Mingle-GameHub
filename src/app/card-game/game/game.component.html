@@ -1,8 +1,10 @@
-<body>
+
+  <body>
     <section class="flex-container " >
         <div class="game" >
             <div class="container-fluid" style="width: 100%;">
                 <button type="button" class="quit-btn" (click)="onQuitClick()">QUIT</button>
+                <h1 class="title pt-3 mb-2 fw-bold" >Card Matching Game</h1>
                 <div class="scorecard d-flex" >
                     <div class="col ">
                         <h1>Scorecard</h1>
@@ -10,7 +12,6 @@
                         <h3> Pairs left: {{pairLeft}}</h3>
                     </div>
                 </div>
-                <h1 class="title pt-3 mb-5 fw-bold" >Card Matching Game</h1>
                 <div class="centre-box" style="width: 100%;">
                     <div class="tile" *ngFor="let card of selectedObjects3" (click)="onCardClick(card)" [ngClass]="{'selected': card.number === selectedCard}"  style="width: 100%;">
                         <button [disabled]="card.isSelected" style="margin: -0.2rem;">

@@ -14,7 +14,7 @@ export class MovesOutModalComponent {
 	slug!:string;
 
 
-	constructor(private modalService: NgbModal,private route : ActivatedRoute,private router : Router) {
+	constructor(private modalService: NgbModal,private route : ActivatedRoute,private router : Router,private location: Location) {
 		this.route.params.subscribe((value) => {
 			this.slug = value['slug'];
 			console.log(this.slug);
@@ -53,11 +53,10 @@ export class MovesOutModalComponent {
 	}
 
 
-	onRetry():void
-	{
-		this.modalService.dismissAll()	
-		// this.router.navigate(['/play-game',this.slug])
-
-	}
+	// onRetry():void
+	// {
+	// 	this.modalService.dismissAll()	
+	// 	window.location.reload();
+	// }
 
 }

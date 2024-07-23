@@ -6,6 +6,7 @@ import { GameInstructionComponent } from './game-instruction/game-instruction.co
 import { RouterModule } from '@angular/router';
 import { WelcomeComponent } from './welcome/welcome.component';
 import { GuardianLoginComponent } from './guardian-login/guardian-login.component';
+import { NgbAccordionModule } from '@ng-bootstrap/ng-bootstrap';
 
 @NgModule({
   declarations: [
@@ -19,6 +20,7 @@ import { GuardianLoginComponent } from './guardian-login/guardian-login.componen
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    NgbAccordionModule
 
   ],
   exports:

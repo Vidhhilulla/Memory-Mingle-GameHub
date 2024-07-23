@@ -10,6 +10,7 @@ import '@angular/compiler';
 import { bootstrapApplication } from '@angular/platform-browser';
 import { LogoutComponent } from './logout/logout.component';
 import { ChangePasswordComponent } from './change-password/change-password.component';
+import { AgChartsAngular } from 'ag-charts-angular';
 
 
 
@@ -28,6 +29,7 @@ import { ChangePasswordComponent } from './change-password/change-password.compo
     FormsModule,
     ReactiveFormsModule,
     RouterModule,
+    AgChartsAngular
   ],
   exports:
   [

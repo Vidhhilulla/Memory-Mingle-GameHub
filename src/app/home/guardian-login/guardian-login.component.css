@@ -1,9 +1,9 @@
 form{
-    width: 45%;
+    width: 40%;
     padding: 50px;
     border: 3px solid #90E0EF;
     border-radius: 20px;
-    background-color: #ADE8F4;
+    background-color: #fff;
     color: #023E8A;
     transition: transform 0.4s ease; 
     /* margin-left: 26%; */

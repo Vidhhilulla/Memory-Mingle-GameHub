@@ -10,6 +10,7 @@ import { QuitModalComponent } from 'src/app/shared/components/quit-modal/quit-mo
 import { HttpClient } from '@angular/common/http';
 import { MovesOutModalComponent } from 'src/app/shared/components/moves-out-modal/moves-out-modal.component';
 import { CongratulationsModalComponent } from 'src/app/shared/components/congratulations-modal/congratulations-modal.component';
+import { LogOutConfirmationComponent } from 'src/app/shared/components/log-out-confirmation/log-out-confirmation.component';
 
 
 
@@ -50,8 +51,6 @@ export class GameComponent implements OnInit
     private modalService: NgbModal,
     private http: HttpClient
   ) {
-
-    
     this.route.params.subscribe((value) => {
       this.selectedColor = []
       this.slug = value['slug'];
@@ -176,43 +175,43 @@ export class GameComponent implements OnInit
     }
     return formedObject;
 }
+onCardClick(card: any): void {
+    
+  if (this.movesForlevel === 0) {
+    this.sendProgressOfFailure();
+  }
+  this.count++;
+  this.cardsArr.push(card);
+  this.selectedCard = card.number;
+  card.isSelected = true;
 
-  onCardClick(card: any): void {
+  if (this.count % 2 === 0) {
+    setTimeout(() => {
+      this.check(0, 1);
+    }, 500);
+  }
+}
+
+check(i: number, j: number): void {
+  this.totalClicks++;
+  if (this.cardsArr[0].number !== this.cardsArr[1].number) {
+    this.notEqual++;
+    this.cardsArr[i].isSelected = false;
+    this.cardsArr[j].isSelected = false;
     this.movesForlevel -= 1;
-    if (this.movesForlevel === 0) {
-      this.sendProgressOfFailure();
-    }
-    this.count++;
-    this.cardsArr.push(card);
-    this.selectedCard = card.number;
-    card.isSelected = true;
+  } else {
+    this.points++;
+    this.pairLeft--;
+    this.movesForlevel += 1;
 
-    if (this.count % 2 === 0) {
-      setTimeout(() => {
-        this.check(0, 1);
-      }, 500);
+
+    if (this.points === this.noOfCards / 2) {
+      this.totalScore();
     }
   }
 
-  check(i: number, j: number): void {
-    this.totalClicks++;
-    if (this.cardsArr[0].number !== this.cardsArr[1].number) {
-      this.notEqual++;
-      this.cardsArr[i].isSelected = false;
-      this.cardsArr[j].isSelected = false;
-    } else {
-      this.points++;
-      this.pairLeft--;
-      this.movesForlevel += 2;
-
-
-      if (this.points === this.noOfCards / 2) {
-        this.totalScore();
-      }
-    }
-
-    this.cardsArr = [];
-  }
+  this.cardsArr = [];
+}
 
   totalScore(): void {
     // this.pointScored = Math.ceil((this.noOfCards / this.count) * 10);
@@ -281,8 +280,13 @@ export class GameComponent implements OnInit
 
 
   getUrl(id:number){
-   return "http://localhost:8082/api/fetchImageUrlById/"+(id+1);
+   return "http://localhost:8082/api/fetchImageUrlById/"+(id);
   }
+
+  guardianLogin():void{
+    this.router.navigate(["/guardian-portal-login"])
+   }
+
 
   
 }

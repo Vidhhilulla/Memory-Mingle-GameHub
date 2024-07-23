@@ -72,7 +72,7 @@ guardianPortalLogin():void
     else if(value.validYN==0)
     {
       
-        this.modalService.open(InvalidLoginComponent, { ariaLabelledBy: 'modal-basic-title' }).result.then(
+        this.modalService.open(InvalidLoginComponent, { ariaLabelledBy:'modal-basic-title' }).result.then(
           (result) => {
             // this.closeResult = `Closed with: ${result}`;
           },

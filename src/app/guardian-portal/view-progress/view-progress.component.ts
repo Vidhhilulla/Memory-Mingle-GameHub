@@ -13,138 +13,134 @@ import { AgChartOptions, AgCharts } from "ag-charts-community";
 })
 export class ViewProgressComponent {
 
-  public options;
   constructor(private route: ActivatedRoute, private cookieService: CookieService,private router: Router,private modalService: NgbModal,private GuardianPortalService:GuardianPortalService) 
   {
-    this.options = {
-      title: {
-        text: "Apple's Revenue by Product Category",
-      },
-      subtitle: {
-        text: "In Billion U.S. Dollars",
-      },
-      data: this.getData(),
-      series: [
-        {
-          type: "bar",
-          xKey: "quarter",
-          yKey: "iphone",
-          yName: "iPhone",
-          stacked: true,
-        },
-        {
-          type: "bar",
-          xKey: "quarter",
-          yKey: "mac",
-          yName: "Mac",
-          stacked: true,
-        },
-        {
-          type: "bar",
-          xKey: "quarter",
-          yKey: "ipad",
-          yName: "iPad",
-          stacked: true,
-        },
-        {
-          type: "bar",
-          xKey: "quarter",
-          yKey: "wearables",
-          yName: "Wearables",
-          stacked: true,
-        },
-        {
-          type: "bar",
-          xKey: "quarter",
-          yKey: "services",
-          yName: "Services",
-          stacked: true,
-        },
-      ],
-    };
+
   }
-  getData() {
-    return [
-      {
-        quarter: "Q1'18",
-        iphone: 140,
-        mac: 16,
-        ipad: 14,
-        wearables: 12,
-        services: 20,
-      },
-      {
-        quarter: "Q2'18",
-        iphone: 124,
-        mac: 20,
-        ipad: 14,
-        wearables: 12,
-        services: 30,
-      },
-      {
-        quarter: "Q3'18",
-        iphone: 112,
-        mac: 20,
-        ipad: 18,
-        wearables: 14,
-        services: 36,
-      },
-      {
-        quarter: "Q4'18",
-        iphone: 118,
-        mac: 24,
-        ipad: 14,
-        wearables: 14,
-        services: 36,
-      },
-      {
-        quarter: "Q1'19",
-        iphone: 124,
-        mac: 18,
-        ipad: 16,
-        wearables: 18,
-        services: 26,
-      },
-      {
-        quarter: "Q2'19",
-        iphone: 108,
-        mac: 20,
-        ipad: 16,
-        wearables: 18,
-        services: 40,
-      },
-      {
-        quarter: "Q3'19",
-        iphone: 96,
-        mac: 22,
-        ipad: 18,
-        wearables: 24,
-        services: 42,
-      },
-      {
-        quarter: "Q4'19",
-        iphone: 104,
-        mac: 22,
-        ipad: 14,
-        wearables: 20,
-        services: 40,
-      },
-    ];
-  }
+
   progressData!:any
+  progressDataForCharts!:any
+  // progressDataForCardMatchEasy = new Map<any, any>();
+
+  public CardMatchEasyProgressArrayOfOptions: AgChartOptions = {}
+  public CardMatchMediumProgressArrayOfOptions: AgChartOptions = {}
+  public CardMatchHardProgressArrayOfOptions: AgChartOptions = {}
+  public PatternRecognitionEasyProgressArrayOfOptions: AgChartOptions = {}
+  public PatternRecognitionMediumProgressArrayOfOptions: AgChartOptions = {}
+  public PatternRecognitionHardProgressArrayOfOptions: AgChartOptions = {}
+
   ngOnInit(): void 
 {
-  this.GuardianPortalService
-  .getProgress( this.cookieService.get('user_id')
-)
-  .subscribe((data: any) =>
-   {
-    console.log(data);
-    this.progressData = data;
-    console.log(this.progressData)
-  });
+  this.GuardianPortalService.getProgress(this.cookieService.get('user_id')).subscribe((data: any) =>
+    {
+     this.progressData = data;
+   });
+
+
+   this.GuardianPortalService.getProgressDataForCharts(this.cookieService.get('user_id')).subscribe((data: any) =>
+    {
+     this.progressDataForCharts = data;
+     console.log('Printing the data: ')
+     console.log(this.progressDataForCharts)
+     const CardMatchEasyProgressArray = [
+      { name: 'Won', value: this.progressDataForCharts[0].TimesWon || 0},
+      { name: 'Lost', value: this.progressDataForCharts[0].TimesLost || 0 }
+    ];
+    const CardMatchMediumProgressArray = [
+      { name: 'Won', value: this.progressDataForCharts[1].TimesWon || 0},
+      { name: 'Lost', value: this.progressDataForCharts[1].TimesLost || 0}
+    ];
+    const CardMatchHardProgressArray = [
+      { name: 'Won', value: (this.progressDataForCharts[2]?.TimesWon || 0) },
+      { name: 'Lost', value: (this.progressDataForCharts[2]?.TimesLost || 0) }
+    ];
+    const PatternRecognitionEasyProgressArray = [
+      { name: 'Won', value: this.progressDataForCharts[3]?.TimesWon || 0},
+      { name: 'Lost', value: this.progressDataForCharts[3]?.TimesLost || 0 }
+    ];
+    const PatternRecognitionMediumProgressArray = [
+      { name: 'Won', value: this.progressDataForCharts[4]?.TimesWon || 0},
+      { name: 'Lost', value: this.progressDataForCharts[4]?.TimesLost || 0}
+    ];  const PatternRecognitionHardProgressArray = [
+      { name: 'Won', value: this.progressDataForCharts[5]?.TimesWon || 0},
+      { name: 'Lost', value: this.progressDataForCharts[5]?.TimesLost || 0}
+      
+    ];
+
+    console.log(CardMatchEasyProgressArray)
+     this.createPieChartCardMatchEasy(CardMatchEasyProgressArray);
+     this.createPieChartCardMatchMedium(CardMatchMediumProgressArray);
+     this.createPieChartCardMatchHard(CardMatchHardProgressArray);
+     this.createPieChartPatternRecognitionEasy(PatternRecognitionEasyProgressArray);
+     this.createPieChartPatternRecognitionMedium(PatternRecognitionMediumProgressArray);
+     this.createPieChartPatternRecognitionHard(PatternRecognitionHardProgressArray);
+
+   });
+
+  //  this.progressDataForCardMatchEasy.set("Won",this.progressDataForCharts[0].TimesWon)
+  //  this.progressDataForCardMatchEasy.set("Lost",this.progressDataForCharts[0].TimesLost)
+
 
 }
+
+
+createPieChartCardMatchEasy(progressDataArray:any): void {
+  this.CardMatchEasyProgressArrayOfOptions = {
+    data: progressDataArray,
+    title: {
+      text: 'Card Match Level Easy ',
+    },
+    series: [{ type: 'pie', angleKey: 'value', legendItemKey:'name'}],
+  };
+}
+
+createPieChartCardMatchMedium(progressDataArray:any): void {
+  this.CardMatchMediumProgressArrayOfOptions = {
+    data: progressDataArray,
+    title: {
+      text: 'Card Match Level Medium ',
+    },
+    series: [{ type: 'pie', angleKey: 'value', legendItemKey:'name'}],
+  };
+}
+createPieChartCardMatchHard(progressDataArray:any): void {
+  this.CardMatchHardProgressArrayOfOptions = {
+    data: progressDataArray,
+    title: {
+      text: 'Card Match Level Hard ',
+    },
+    series: [{ type: 'pie', angleKey: 'value', legendItemKey:'name'}],
+  };
+}
+createPieChartPatternRecognitionEasy(progressDataArray:any): void {
+  this.PatternRecognitionEasyProgressArrayOfOptions = {
+    data: progressDataArray,
+    title: {
+      text: 'Pattern Recognition Level Easy ',
+    },
+    series: [{ type: 'pie', angleKey: 'value', legendItemKey:'name'}],
+  };
+}
+createPieChartPatternRecognitionMedium(progressDataArray:any): void {
+  this.PatternRecognitionMediumProgressArrayOfOptions = {
+    data: progressDataArray,
+    title: {
+      text: 'Pattern Recognition Level Medium ',
+    },
+    series: [{ type: 'pie', angleKey: 'value', legendItemKey:'name'}],
+  };
+}
+createPieChartPatternRecognitionHard(progressDataArray:any): void {
+  this.PatternRecognitionHardProgressArrayOfOptions = {
+    data: progressDataArray,
+    title: {
+      text: 'Pattern Recognition Level Hard '
+    },
+    series: [{ type: 'pie', angleKey: 'value', legendItemKey:'name'}],
+  };
+}
+
+
 }
 
   

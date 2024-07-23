@@ -1,11 +1,153 @@
+
+    
 <body>
-    <div class="welcome-container">
-        <h1 >Welcome to </h1>
-        <h1>MemoryMingle</h1>
-        <p>"Explore, Play, and Enjoy the Ultimate Gaming Experience."</p>
-        <div class="btn-container">
-            <button class="btn " [routerLink]="['/login']" >Login</button>
-            <button class="btn "  [routerLink]="['/register']">Register</button>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg" style=" background-color:#0077b6;">
+        <div class="container-fluid">
+            <div class="logo pt-2">
+      
+                <i class="fa-solid fa-wand-magic-sparkles fa-3x"></i>
+                <a href="#"><p><span>Memory</span>Mingle</p></a>
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About Us</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#features">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#faqs">FAQs</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" [routerLink]="['/login']" >Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link"  [routerLink]="['/register']">Sign-up</a>
+                    </li>
+
+                    <li class="nav-item">
+                        <a class="nav-link"  [routerLink]="['/guardian-portal-login']">Guardian-portal-login</a>
+                    </li>
+                </ul>
+            </div>
         </div>
-    </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero  text-center py-5">
+        <div class="container">
+            <h1 class="display-2">DREAM About GOALS</h1>
+            <p class="lead">"Explore, Play, and Enjoy the Ultimate Gaming Experience."</p>
+            <img src="assets\file-memory-games-for-kids-1593598390.jpg" alt="">
+        </div>
+
+    </header>
+
+    <!-- Key Points Section -->
+    <section id="about" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-size: 2.5rem;">Why Choose Memory Mingle?</h2>
+            <div class="row">
+                <div class="col-md-4 text-center">
+                    <i class="fa-solid fa-heart fa-3x mb-3"></i>
+                    <h4>User Friendly</h4>
+                    <p>Easy to use interface for everyone.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fa-solid fa-shield-alt fa-3x mb-3"></i>
+                    <h4>Secure</h4>
+                    <p>Your progress are safe with us.</p>
+                </div>
+                <div class="col-md-4 text-center">
+                    <i class="fa-solid fa-cloud fa-3x mb-3"></i>
+                    <h4>Accessible Anywhere</h4>
+                    <p>Accessible  from any device.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Unique Features Section -->
+    <section id="features" class=" py-5 ">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-size: 2.5rem ;">Unique Features</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <h4>Customizable Timings</h4>
+                    <p>Customize the timings for your ward.</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Easy and fun Games</h4>
+                    <p>Explore your mind with our interactive games with levels.</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Progress</h4>
+                    <p>Track your wards progress.</p>
+                </div>
+                <div class="col-md-6">
+                    <h4>Memory Reminders</h4>
+                    <p>Get reminded of your time available.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQs Section -->
+    <section id="faqs" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-4" style="font-size: 2.5rem;">Frequently Asked Questions</h2>
+            <div ngbAccordion >
+                <div ngbAccordionItem>
+                    <h2 ngbAccordionHeader id="headingOne">
+                        <button ngbAccordionButton>What is Memory Mingle?</button>
+                    </h2>
+                    <div ngbAccordionCollapse id="collapseOne" aria-labelledby="headingOne">
+                        <div ngbAccordionBody>
+                            <ng-template>       Memory Mingle is a platform that helps your child learn and improve there memory in a fun way by playing games.
+                                Children can play games,track there progress and explore learning,where as parents can track there timings and progress in guardian portal section.
+                            </ng-template>
+                        </div>
+                    </div>
+                </div>
+                <div ngbAccordionItem>
+                    <h2 ngbAccordionHeader id="headingTwo">
+                        <button ngbAccordionButton>How do I create an account?</button>
+                    </h2>
+                    <div ngbAccordionCollapse id="collapseTwo" aria-labelledby="headingTwo">
+                        <div ngbAccordionBody>
+                            You can create an account by clicking the Sign-up link and following the instructions.
+                        </div>
+                    </div>
+                </div>
+                <div ngbAccordionItem>
+                    <h2 ngbAccordionHeader id="headingThree">
+                        <button ngbAccordionButton>Is my data secure?</button>
+                    </h2>
+                    <div ngbAccordionCollapse id="collapseThree" aria-labelledby="headingThree">
+                        <div ngbAccordionBody>
+                            Yes, we prioritize your privacy and security. Your data is protected with advanced security measures.
+                        </div>
+                    </div>
+                </div>
+                <div ngbAccordionItem>
+                    <h2 ngbAccordionHeader id="headingFour">
+                        <button ngbAccordionButton>Are there daily timing slots available?</button>
+                    </h2>
+                    <div ngbAccordionCollapse id="collapseFour" aria-labelledby="headingFour">
+                        <div ngbAccordionBody>
+                            Yes, the default timing for playing is 30 minutes.
+                            The guardian can increment the timings.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
 </body>

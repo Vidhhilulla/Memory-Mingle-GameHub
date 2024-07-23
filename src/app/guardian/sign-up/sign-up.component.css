@@ -1,9 +1,10 @@
 form{
-    width: 45%;
+    width: 40%;
     padding: 50px;
     border: 3px solid #90E0EF;
     border-radius: 20px;
-    background-color: #ADE8F4;
+    /* background-color: #ADE8F4; */
+    background-color: #fff;
     color: #023E8A;
     transition: transform 0.4s ease; 
     margin-left: 26%;
@@ -11,6 +12,10 @@ form{
 
 body{
     background-color: #CAF0F8;
+    padding-top: 20px;
+    padding-bottom: 30px;
+    height: auto;
+
 }
 .btn-primary:hover {
     background-color: #023E8A; 
@@ -24,8 +29,7 @@ body{
     transform: scale(1.1);
 } */
 
-body
-{
+*{
     padding: 0;
     margin: 0;
     box-sizing: border-box;

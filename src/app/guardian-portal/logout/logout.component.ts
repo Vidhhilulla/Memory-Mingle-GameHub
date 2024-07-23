@@ -11,6 +11,8 @@ import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 })
 export class LogoutComponent {
 
+
+  timeLeftTimestampOfLogOut!:Date
   constructor(private route: ActivatedRoute, private cookieService: CookieService,private router: Router,private modalService: NgbModal,private GuardianPortalservice:GuardianPortalService
   ) {
 
@@ -24,6 +26,7 @@ export class LogoutComponent {
   }
   onLogOutClick()
   {
+    this.timeLeftTimestampOfLogOut= new Date();
 		this.router.navigate(["/home"])
   }
 }

@@ -1,54 +1,168 @@
 body {
-    margin: 0;
-    padding: 0;
-    font-family: 'Arial', sans-serif;
-    background: linear-gradient(to right, #0077b6, #0096c7, #00b4d8, #48cae4, #90e0ef,#ade8f4,#caf0f8);
-    color: #fff;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
-        .welcome-container {
-            text-align: center;
-            max-width: 600px;
-            margin: auto;
-        }
+.logo {
+display: flex;
+align-items: center;
+justify-content: center;
+}
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-            
- }
+.logo i,
+.logo p span {
+color: #e3f2fd;
+}
 
-        p {
-            font-size: 1.2rem;
-            margin-bottom: 30px;
-        }
+.logo p {
+margin-left: 10px;
+color: #90caf9;
+font-size: 2.5rem;
+}
 
-        .btn-container {
-            display: flex;
-            justify-content: center;
-        }
+.hero {
+/* background-color: #90caf9; */
+color: #1e6091;
+padding: 50px 20px; 
+display: flex;
+justify-content: space-between;
+}
 
+.main1 {
+font-size: 5.5rem;
+font-weight: 100;
+font-family: "League Script", cursive !important;
+margin: 0 !important;
+}
 
- 
-
-         button {
-            padding: 10px 20px;
-            font-size: 1.2rem;
-            border: none;
-            border-radius: 5px;
-            background-color: #168aad;
-            color: #fff;
-            cursor: pointer;
-            transition: background-color 0.3s;
-            margin: 0.5rem;
-        }
-
-         button:hover {
-            background-color: #168aad;
-        }
+.main2 {
+font-size: 4.5rem;
+font-weight: bold;
+font-style: italic;
+margin: 0 !important;
+}
 
 
+.nav-link {
+    font-size: 1.3rem;
+    color: #e3f2fd;
+    margin: 3px;
+    position: relative;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background-color: #e3f2fd;
+    transition: width 0.3s;
+   
+}
+
+.nav-link:hover::after {
+    width: 100%;
+}
+
+
+.image-collage {
+display: flex;
+flex-direction: row;
+gap: 10px;
+}
+
+.image-collage2 {
+display: flex;
+flex-direction: row;
+gap: 10px;
+}
+
+.image-collage img {
+width: 20%;
+margin-left: 4.8rem;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.image-collage2 img {
+width: 15%;
+border-radius: 10px;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+margin: 0.4rem;
+}
+
+#about 
+{
+color: #0077b6;
+background-color: #e3f2fd;
+
+}
+
+#about h2{
+color: #1e6091;
+
+}
+#about .fa-heart,
+#about .fa-shield-alt,
+#about .fa-cloud {
+color: #0077b6;
+}
+
+#features h4 {
+color: #1e6091;
+}
+
+#faqs
+{
+color: #0077b6;
+background-color: #e3f2fd;
+
+
+}
+
+
+#faqs h2{
+color: #1e6091;
+
+}
+
+#features {
+color: #0077b6;
+}
+
+
+#features  .row{
+margin-left: 5rem;
+}
+
+
+#features h2{
+color: #1e6091;
+
+}
+
+
+footer {
+background-color: #0077b6;
+color: #e3f2fd;
+}
+
+.logo {
+margin: auto;
+display: flex;
+}
+.logo i,
+.logo span {
+color: #e3f2fd;
+
+}
+
+.logo p {
+text-align: center;
+color:#90caf9;
+font-size: 2.5rem;
+}
+a {
+text-decoration: none;
+}

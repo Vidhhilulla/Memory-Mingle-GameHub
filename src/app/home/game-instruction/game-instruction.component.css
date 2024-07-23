@@ -2,13 +2,13 @@
   font-size: 2rem;
   font-weight: 500;
   color: var(--primary-color);
-  letter-spacing: 1rem;
+  letter-spacing: 0.5rem;
   font-weight: bolder;
 }
-body
-{
+body{
   background-color: #bde0fe;
-  height: 100vh;
+  height: auto;
+  padding-top:50px;
 
 }
 .Heading
@@ -29,26 +29,70 @@ body
   margin-top: 20px;
 }
 
-
-
 .content
 {
   color: #6f2dbd;
+  margin-top: 20px;
+
 }
 .game-instructions
 {
-  padding: 1rem;
-  background-color: #baebff;
-  border-radius: 2.6rem;
+  background-color: #fff;
+  border-radius: 2.2rem;
   border: 2px solid #6f2dbd;
   width: 800px;
-  height: 500px;
+  height: 450px;
   margin: auto;
-  
 }
 
 .content
 {
   margin-top: 1rem;
   font-size: 1.4rem;
+  padding: 1.5rem;
+}
+
+
+
+#navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #0077b6;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+  color: #fff;
+  z-index: 10001;
+}
+
+
+.logo {
+margin: auto;
+display: flex;
+  }
+  .logo i,
+  .logo span {
+  color: #e3f2fd;
+  
+  }
+  
+  .logo p {
+  text-align: center;
+  color:#90caf9;
+  font-size: 2.5rem;
+  }
+  a {
+    text-decoration: none;
+}
+
+#profile-info {
+  #user-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  
+  z-index: 10002;
+  display: flex;
+  align-items: center;
 }

@@ -17,7 +17,7 @@ export class LoginComponent
 {
   loginForm!:FormGroup
   timeLeft!:number
-  timeLeftTimestamp!:Date
+  timeLeftTimestampOfLogin!:Date
 
   
 
@@ -57,8 +57,8 @@ submit():void
       console.log("Login!!") 
       console.log(value)
       this.timeLeft=value.time_left;
-      this.timeLeftTimestamp= new Date();
-      console.log(this.timeLeftTimestamp)
+      this.timeLeftTimestampOfLogin= new Date();
+      console.log(this.timeLeftTimestampOfLogin)
       
       // console.log(new Date(this.time_temp).toISOString());
       // let timeLeftMilliseconds = this.timeLeft * 60 * 1000;
@@ -86,7 +86,6 @@ submit():void
   // this.cookieservice.set("token",value.token)
   this.cookieservice.set("guardianName",value.g_name)
   this.cookieservice.set("childName",value.child_name)
-
   this.cookieservice.set("g_id",value.g_id)
   this.cookieservice.set("isLoggedIn","1")
   this.cookieservice.set("user_id",value.user_id)
@@ -103,7 +102,6 @@ submit():void
       // this.closeResult = `Dismissed ${this.getDismissReason(reason)}`;
     },
     );
-
 }
   })
 }

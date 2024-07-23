@@ -73,4 +73,8 @@ export class CardGameService {
   {
     return this.http.post(`${APP_CONSTANTS.BACKEND_URL}fetchImageUrlById`,id);
   }
+
+  getPattern(level:number):Observable<any>{
+    return this.http.post(`${APP_CONSTANTS.BACKEND_URL}get-pattern`,{level})
+  }
 }

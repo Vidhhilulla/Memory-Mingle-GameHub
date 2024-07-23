@@ -15,6 +15,7 @@ import { SetTimerComponent } from './guardian-portal/set-timer/set-timer.compone
 import { ViewProgressComponent } from './guardian-portal/view-progress/view-progress.component';
 import { LogoutComponent } from './guardian-portal/logout/logout.component';
 import { ChangePasswordComponent } from './guardian-portal/change-password/change-password.component';
+import { TileMatchComponent } from './card-game/tile-match/tile-match.component';
 
 const routes: Routes = [
 
@@ -31,8 +32,12 @@ const routes: Routes = [
     component:GameInstructionComponent
   },
   {
-    path:'play-game/:slug',
+    path:'play-cardMatch',
     component:GameComponent
+  },
+  {
+    path:'play-gameTile',
+    component:TileMatchComponent
   },
 
   {

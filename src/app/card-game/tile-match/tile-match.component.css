@@ -1,0 +1,63 @@
+*{
+    background-color: #baebff;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body
+{
+    font-family: 'ABeeZee', sans-serif;
+    line-height: 1.6rem;
+    overflow-x: hidden;
+}
+
+.flex-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center; /* Center items horizontally */
+    align-items: center; /* Center items vertically */
+}
+.title{
+    text-align: center;
+    font-style: italic ;
+    color: #0077b6;
+
+}
+
+.centre-box{
+    display: grid;
+    grid-template-columns: repeat(4,0.1fr); /* You can adjust the number of columns */
+    gap: 10px;
+    /* grid-auto-columns: 2px; */
+    max-width: 450px; 
+    max-height: 800px; 
+    margin: auto !important;
+    background-color: #DCF2F1;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 10px;
+}
+
+.box{
+    width: 100px; 
+    height :100px;
+}
+
+.btn{
+    margin-top: 30px;
+    margin-left: 1450px;
+    padding: 10px;
+}
+.quit-btn{
+    margin-top: 10px;
+    margin-right: 1450px;
+    margin-left: 20px;
+    padding : 15px;
+    width: auto;
+    height: 50px;
+    border-radius: 5px;
+    background: #fff;
+}
+
+

@@ -1,0 +1,14 @@
+
+<section class="flex-container ">
+    <div class="game">
+        <div class="container-fluid" style="width: 100%;">
+            <button type="button" class="quit-btn" (click)="onQuitClick()">QUIT</button>
+            <h1 class="title pt-3 mb-5 fw-bold">Tile Pattern Game</h1>
+            <div class="centre-box" style="width: 100%;">
+                <button class="box" [disabled]="tile.isSelected" *ngFor="let tile of tiles" (click)="onTileClick(tile)"
+                    [style.background-color]="tile.currentColor">
+                    
+                </button>
+            </div>
+        </div>
+    </div>

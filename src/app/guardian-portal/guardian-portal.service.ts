@@ -67,6 +67,25 @@ export class GuardianPortalService {
   }
 
 
+  changePassword(g_id:string,password:string):Observable<any>{
+    let body={
+      g_id:g_id,
+      password:password
+    }
+    return this.http.post(APP_CONSTANTS.BACKEND_URL +'changePassword',body)
+  }
+
+
+  
+
+  getProgressDataForCharts(user_id:String):Observable<any>
+  {
+    let body={
+      user_id:user_id
+    }
+    return this.http.post(APP_CONSTANTS.BACKEND_URL +'getProgressDataForCharts',body);
+  }
+
 
 
   }
